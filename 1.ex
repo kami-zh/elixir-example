@@ -96,3 +96,5 @@ defmodule Math do
 end
 
 Math.sum(10) #=> 55
+
+<<31070 :: utf8>> #=> 神
