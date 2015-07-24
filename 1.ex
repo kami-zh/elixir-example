@@ -98,3 +98,16 @@ end
 Math.sum(10) #=> 55
 
 <<31070 :: utf8>> #=> 神
+
+list = [a: 1, b: 2] #=> [a: 1, b: 2]
+list ++ [c: 3]
+list #=> [a: 1, b: 2, c: 3]
+
+a = %{:x => 1}
+a[:x] #=> 1
+b = :x
+a[b] #=> 1
+a.x #=> 1
+
+Map.get(a, :x) #=> 1
+Map.to_list #=> [x: 1]
