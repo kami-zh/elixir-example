@@ -85,7 +85,7 @@ end
 
 if true, do: 1 + 2 #=> 3
 
-defmodule Math do
+defmodule Math2 do
   def sum(x) do
     if x == 0 do
       0
@@ -95,7 +95,7 @@ defmodule Math do
   end
 end
 
-Math.sum(10) #=> 55
+Math2.sum(10) #=> 55
 
 <<31070 :: utf8>> #=> 神
 
@@ -110,4 +110,56 @@ a[b] #=> 1
 a.x #=> 1
 
 Map.get(a, :x) #=> 1
-Map.to_list #=> [x: 1]
+Map.to_list(a) #=> [x: 1]
+
+defmodule Math3 do
+  def sum(a, b) do
+    do_sum(a, b)
+  end
+
+  defp do_sum(a, b) do
+    a + b
+  end
+end
+
+Math3.sum(1, 2) #=> 3
+# Math3.do_sum(1, 2) #=> UndefinedFunctionError
+
+defmodule Math4 do
+  def zero?(0) do
+    true
+  end
+
+  def zero?(x) when x > 0 do
+    false
+  end
+
+  def zero?(x) when x < 0 do
+    :hoge
+  end
+end
+
+IO.puts Math4.zero?(0) #=> true
+IO.puts Math4.zero?(1) #=> false
+IO.puts Math4.zero?(-1) #=> hoge
+
+defmodule Concat do
+  def join(a, b, sep \\ " ") do
+    a <> sep <> b
+  end
+end
+
+IO.puts Concat.join("Hello", "World") #=> Hello World
+IO.puts Concat.join("Hello", "World", "_") #=> Hello_World
+
+defmodule Math5 do
+  def sum_list([head|tail], accumulator) do
+    sum_list(tail, head + accumulator)
+  end
+
+  def sum_list([], accumulator) do
+    accumulator
+  end
+end
+
+IO.puts Math5.sum_list([1, 2, 3], 0) #=> 6
