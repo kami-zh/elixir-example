@@ -163,3 +163,9 @@ defmodule Math5 do
 end
 
 IO.puts Math5.sum_list([1, 2, 3], 0) #=> 6
+
+Enum.map([1, 2, 3], fn x -> x * 2 end)
+Enum.map(%{1 => 2, 3 => 4}, fn {k, v} -> k * v end)
+
+a = fn x -> x * 2 end
+4 |> a.() #=> 16
