@@ -169,3 +169,23 @@ Enum.map(%{1 => 2, 3 => 4}, fn {k, v} -> k * v end)
 
 a = fn x -> x * 2 end
 4 |> a.() #=> 16
+
+send self(), {:hello, "world"}
+
+receive do
+  {:hello, msg} -> msg
+after
+  1_000 -> "nothing after 1s"
+end
+
+a = IO.gets "yes or no? "
+a #=> "yes\n"
+
+case File.read("hoge.txt") do
+  {:ok, body}      -> body
+  {:error, reason} -> reason
+end
+
+Path.join("hoge", "fuga") #=> "hoge/fuga"
+
+Path.expand("~/.ssh/config") #=> "/Users/kami/.ssh/config"
